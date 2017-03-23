@@ -1,4 +1,4 @@
-package test;
+package Video;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.BufferedImageFilter;

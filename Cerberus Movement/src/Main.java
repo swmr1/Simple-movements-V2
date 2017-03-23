@@ -1,5 +1,5 @@
-import test.LeftCamera;
-import test.RightCamera;
+import Video.LeftCamera;
+import Video.RightCamera;
 
 public class Main{
 	
@@ -35,14 +35,14 @@ public class Main{
 	public static int Yaw;
 
 	public static void main(String[] args) throws Exception {
-		movementInput = new client();
-		movementInput.start();
+//		movementInput = new client();
+//		movementInput.start();
 //		SendingData = new UDPServer();
 //		SendingData.start();
 //		sensors = new SensorData();
 //		sensors.start();
-//		LeftCamera left = new LeftCamera();
-//		left.start();
+		LeftCamera left = new LeftCamera();
+		left.start();
 //		Thread.sleep(20);
 //		RightCamera right = new RightCamera();
 //		right.start();

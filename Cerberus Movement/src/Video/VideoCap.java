@@ -1,4 +1,4 @@
-package test;
+package Video;
 import java.awt.image.BufferedImage;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;

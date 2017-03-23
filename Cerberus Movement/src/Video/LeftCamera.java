@@ -1,4 +1,4 @@
-package test;
+package Video;
 
 public class LeftCamera extends Thread {
 	public void run() {
