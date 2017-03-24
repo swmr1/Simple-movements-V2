@@ -1,4 +1,5 @@
 import Video.LeftCamSend;
+import Video.RightCamSend;
 import cameraBackup.MyFrame;
 
 public class Main{
@@ -38,7 +39,7 @@ public class Main{
 	public static int mag;
 	
 	public static LeftCamSend left;
-//	public static RightCamera right;
+	public static RightCamSend right;
 	public static void main(String[] args) throws Exception {
 		
 //		movementInput = new client();
@@ -53,6 +54,8 @@ public class Main{
 //		other.start();
 		left = new LeftCamSend();
 		left.start();
+		right = new RightCamSend();
+		right.start();
 		
 	}
 }

@@ -20,7 +20,7 @@ public class client extends Thread {
 	public void run() {
 
 		try {
-			DatagramSocket clientSocket = new DatagramSocket(4444);
+			DatagramSocket clientSocket = new DatagramSocket(5555);
 
 			byte[] receiveData = new byte[640];
 			DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
