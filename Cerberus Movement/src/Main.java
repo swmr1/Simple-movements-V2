@@ -1,5 +1,5 @@
-import Video.LeftCamera;
-import Video.RightCamera;
+import Video.LeftCamSend;
+import cameraBackup.MyFrame;
 
 public class Main{
 	
@@ -37,20 +37,22 @@ public class Main{
 	public static int Yaw;
 	public static int mag;
 	
-	public static LeftCamera left;
-	public static RightCamera right;
+	public static LeftCamSend left;
+//	public static RightCamera right;
 	public static void main(String[] args) throws Exception {
 		
 //		movementInput = new client();
 //		movementInput.start();
 //		SendingData = new UDPServer();
 //		SendingData.start();
-		ThrusterMovement = new Thrusters();
-		ThrusterMovement.start();
+//		ThrusterMovement = new Thrusters();
+//		ThrusterMovement.start();
 //		sensors = new SensorData();
 //		sensors.start();
-		other = new OtherData();
-		other.start();
+//		other = new OtherData();
+//		other.start();
+		left = new LeftCamSend();
+		left.start();
 		
 	}
 }

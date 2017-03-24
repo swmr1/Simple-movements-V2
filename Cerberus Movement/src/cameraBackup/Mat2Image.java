@@ -1,9 +1,12 @@
-package Video;
+package cameraBackup;
 
 import java.awt.image.BufferedImage;
+import java.awt.image.BufferedImageFilter;
 
 import org.opencv.core.Core;
+import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.imgproc.Imgproc;
 
 public class Mat2Image {
 	Mat mat = new Mat();
@@ -33,7 +36,6 @@ public class Mat2Image {
 		getSpace(mat);
 		mat.get(0, 0, dat);
 		img.getRaster().setDataElements(0, 0, mat.cols(), mat.rows(), dat);
-		
 		return img;
 	}
 

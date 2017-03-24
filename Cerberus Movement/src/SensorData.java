@@ -30,6 +30,7 @@ public class SensorData extends Thread implements SerialPortEventListener {
 	 */
 	private BufferedReader input;
 	/** The output stream to the port */
+	@SuppressWarnings("unused")
 	private OutputStream output;
 	/** Milliseconds to block while waiting for port open */
 	private static final int TIME_OUT = 2000;
@@ -43,6 +44,7 @@ public class SensorData extends Thread implements SerialPortEventListener {
 		// System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
 
 		CommPortIdentifier portId = null;
+		@SuppressWarnings("rawtypes")
 		Enumeration portEnum = CommPortIdentifier.getPortIdentifiers();
 
 		// First, Find an instance of serial port as set in PORT_NAMES.

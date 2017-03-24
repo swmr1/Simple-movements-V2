@@ -1,9 +1,15 @@
-package Video;
+package cameraBackup;
 import java.awt.EventQueue;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import org.opencv.core.Core;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
 
 
 public class MyFrame extends JFrame {
@@ -12,8 +18,6 @@ public class MyFrame extends JFrame {
 	 */
 	//private static final long serialVersionUID = -1363938950107966953L;
 	private JPanel contentPane;
-	private static int cam;
-
   /**
   * Launch the application.
   */
@@ -21,8 +25,8 @@ public class MyFrame extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    MyFrame frame = new MyFrame(0);
-                    frame.setVisible(true);
+                    //MyFrame frame = new MyFrame(0);
+                   // frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -33,10 +37,11 @@ public class MyFrame extends JFrame {
   /**
   * Create the frame.
   */
-    public MyFrame(int camera) {
-    	cam = camera;
+    public MyFrame() {
+		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 650, 490);
+        setBounds(100, 100, 490, 650 );
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -46,18 +51,21 @@ public class MyFrame extends JFrame {
     }
 
 
-	VideoCap videoCap = new VideoCap(cam);
  
     public void paint(Graphics g){
         g = contentPane.getGraphics();
-       
-        g.drawImage(videoCap.getOneFrame(), 0, 0, this);
+
+        Mat mat1 = new Mat(480, 640, CvType.CV_8UC1);
+        BufferedImage img = new BufferedImage(mat1.cols(),mat1.rows(), BufferedImage.TYPE_BYTE_GRAY);
+        img.getRaster().setDataElements(0, 0, mat1.cols(), mat1.rows(), client.img);
+        g.drawImage(img, 0, 0, this);
     }
  
     class MyThread extends Thread{
         @Override
         public void run() {
             for (;;){
+            	System.out.println("f");
                 repaint();
                 try { Thread.sleep(30);
                 } catch (InterruptedException e) {    }

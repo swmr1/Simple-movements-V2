@@ -7,6 +7,7 @@ import java.net.SocketTimeoutException;
 import Video.LeftCamera;
 import Video.RightCamera;
 
+@SuppressWarnings("unused")
 public class OtherData extends Thread{
 	/**
 	 * XY + ", " + Yaw+ ", "+ Pitch + ", " + Roll + ", "+ Stop;
