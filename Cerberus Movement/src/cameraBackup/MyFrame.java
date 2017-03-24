@@ -65,9 +65,8 @@ public class MyFrame extends JFrame {
         @Override
         public void run() {
             for (;;){
-            	System.out.println("f");
                 repaint();
-                try { Thread.sleep(30);
+                try { Thread.sleep(0);
                 } catch (InterruptedException e) {    }
             }  
         } 

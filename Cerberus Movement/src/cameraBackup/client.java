@@ -33,15 +33,14 @@ public class client extends Thread {
 				clientSocket.receive(in);
 				String test = new String(wait);
 				if (test.equals("start")) {
+					System.out.println("start");
 					for (int i = 0; i < 480; i++) {
 						clientSocket.receive(receivePacket);
 						byte[] temp = receivePacket.getData();
 						for (int j = 0; j < 640; j++) {
-							img[(i * 640) + i] = temp[j];
+							img[(i * 640) + j] = temp[j];
 						}
-						//System.out.println(i + " : " + temp.length + " : " + Arrays.toString(temp));
 					}
-
 				}
 			}
 			clientSocket.close();

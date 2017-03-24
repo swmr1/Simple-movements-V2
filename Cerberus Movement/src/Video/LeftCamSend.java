@@ -21,17 +21,14 @@ public class LeftCamSend extends Thread {
 			serverSocket.connect(host, 4444);
 			VideoCap vid = new VideoCap(0);
 			int i = 1;
-			DatagramSocket clientSocket = new DatagramSocket(4444);
 
 
 			while (i == 1) {
 				byte[] ready = "start".getBytes();
 				DatagramPacket receivePacket = new DatagramPacket(ready, ready.length);
-				System.out.println(ready.length);
 				serverSocket.send(receivePacket);
 				
 				Mat sendData = vid.getOneFrame();
-				System.out.println(sendData);
 				byte[] data = new byte[(int)(sendData.total() * sendData.channels())];
 				sendData.get(0, 0, data);
 				
@@ -41,11 +38,11 @@ public class LeftCamSend extends Thread {
 						int index = j + (k*sendData.width());
 						temp[j] = data[index];
 					}
-//					System.out.println(k + " : " + temp.length + " : " +  Arrays.toString(temp));
 					receivePacket = new DatagramPacket(temp, temp.length);
 					serverSocket.send(receivePacket);
-					Thread.sleep(20);
+					//Thread.sleep();
 				}
+				Thread.sleep(30);
 
 			}
 
