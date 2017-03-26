@@ -1,10 +1,11 @@
+package mainApp;
 import java.io.*;
 import java.net.*;
 
 
 public class client extends Thread{
 	/**
-	 * XY + ", " + Yaw+ ", "+ Pitch + ", " + Roll + ", "+ Stop;
+	 * Mag + ", " + XY + ", " + Yaw+ ", "+ Pitch + ", " + Roll + ", "+ fire;
 	 */
 	public void run() { 
 			try {
@@ -12,7 +13,6 @@ public class client extends Thread{
 				DatagramSocket clientSocket = new DatagramSocket(Main.portMovement);
 				byte[] receiveData = new byte[1024];  
 			    DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-			    clientSocket.setSoTimeout(10000);
 			    while(!clientSocket.isClosed()){
 			    	clientSocket.receive(receivePacket);
 			    	String modifiedSentence = new String(receivePacket.getData());
@@ -22,12 +22,15 @@ public class client extends Thread{
 						break;
 					default:
 						String[] split = modifiedSentence.split(", ");
-						if (split[split.length-1].equals(true)){
-							
-						}
+						Main.mag = Integer.parseInt(split[0]);
+						Main.AxisXY = Integer.parseInt(split[1]);
+						Main.Yaw = Integer.parseInt(split[2]);
+						Main.Pitch = Integer.parseInt(split[3]);
+						Main.Roll = Integer.parseInt(split[4]);
+						Main.fire = Boolean.getBoolean(split[5]);
 						break;
 					}
-			    	System.out.println("FROM SERVER:" + modifiedSentence);
+//			    	System.out.println("FROM SERVER:" + modifiedSentence);
 			    }
 			    clientSocket.close();
 			      

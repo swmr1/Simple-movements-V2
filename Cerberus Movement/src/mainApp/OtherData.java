@@ -1,13 +1,10 @@
+package mainApp;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
 
-import Video.LeftCamera;
-import Video.RightCamera;
-
-@SuppressWarnings("unused")
 public class OtherData extends Thread{
 	/**
 	 * XY + ", " + Yaw+ ", "+ Pitch + ", " + Roll + ", "+ Stop;
@@ -15,7 +12,6 @@ public class OtherData extends Thread{
 	@SuppressWarnings("deprecation")
 	public void run() { 
 			try {
-				Main.left = new LeftCamera();
 				DatagramSocket clientSocket = new DatagramSocket(Main.portOtherComands);
 				byte[] receiveData = new byte[1024];  
 			    DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
@@ -45,11 +41,9 @@ public class OtherData extends Thread{
 						System.out.println("TEST");
 						System.out.println(Main.left.getState());
 						if (!Main.left.isAlive()){
-							//Main.left = new LeftCamera();
 							Main.left.start();
 						}
-						//Main.right = new RightCamera();
-						//Main.right.start();
+						
 						break;
 					default:
 						System.out.println("T");

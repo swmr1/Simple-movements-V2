@@ -1,6 +1,6 @@
+package mainApp;
 import Video.LeftCamSend;
 import Video.RightCamSend;
-import cameraBackup.MyFrame;
 
 public class Main{
 	
@@ -10,7 +10,7 @@ public class Main{
 	static SensorData sensors;
 	static OtherData other;
 	
-	public static String RemoteIp = "163.118.36.65";
+	public static String RemoteIp = "192.168.0.3";
 
 	public static int portCenterMainCamera = 3333;
 	public static int portLeftArmCamera =	 4444;
@@ -22,6 +22,10 @@ public class Main{
 	//Serial Ports
 	public static String SensorSerialPort = "COM5";
 	public static String ThrusterSerialPort = "COM6";
+	
+	// camera numbers
+	public static int RightCamNum = 0;
+	public static int LeftCamNum = 0;
 	
 	//Sensor Data
 	public static int Prox1 = 0;
@@ -37,25 +41,26 @@ public class Main{
 	public static int Pitch;
 	public static int Yaw;
 	public static int mag;
+	public static boolean fire;
 	
 	public static LeftCamSend left;
 	public static RightCamSend right;
 	public static void main(String[] args) throws Exception {
 		
-//		movementInput = new client();
-//		movementInput.start();
+		movementInput = new client();
+		movementInput.start();
+		ThrusterMovement = new Thrusters();
+		ThrusterMovement.start();
 //		SendingData = new UDPServer();
 //		SendingData.start();
-//		ThrusterMovement = new Thrusters();
-//		ThrusterMovement.start();
 //		sensors = new SensorData();
 //		sensors.start();
 //		other = new OtherData();
 //		other.start();
 		left = new LeftCamSend();
 		left.start();
-		right = new RightCamSend();
-		right.start();
+//		right = new RightCamSend();
+//		right.start();
 		
 	}
 }

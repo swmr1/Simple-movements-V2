@@ -2,9 +2,9 @@ package Video;
 
 import java.io.IOException;
 import java.net.*;
-import java.util.Arrays;
-
 import org.opencv.core.Mat;
+
+import mainApp.Main;
 
 public class LeftCamSend extends Thread {
 	// TODO Edit to fit our needs
@@ -15,11 +15,11 @@ public class LeftCamSend extends Thread {
 		try {
 			InetAddress host;
 
-			host = InetAddress.getByName("localhost");
+			host = InetAddress.getByName(Main.RemoteIp);
 			@SuppressWarnings("resource")
 			DatagramSocket serverSocket = new DatagramSocket();
-			serverSocket.connect(host, 4444);
-			VideoCap vid = new VideoCap(1);
+			serverSocket.connect(host, Main.portLeftArmCamera);
+			VideoCap vid = new VideoCap(Main.LeftCamNum);
 			int i = 1;
 
 
@@ -31,7 +31,6 @@ public class LeftCamSend extends Thread {
 				Mat sendData = vid.getOneFrame();
 				byte[] data = new byte[(int)(sendData.total() * sendData.channels())];
 				sendData.get(0, 0, data);
-				
 				for(int k = 0; k < sendData.height(); k++){
 					byte[] temp = new byte[sendData.width()];
 					for(int j = 0; j < sendData.width(); j++){
@@ -40,10 +39,8 @@ public class LeftCamSend extends Thread {
 					}
 					receivePacket = new DatagramPacket(temp, temp.length);
 					serverSocket.send(receivePacket);
-					//Thread.sleep();
 				}
-				Thread.sleep(100);
-
+				Thread.sleep(0);
 			}
 
 		} catch (UnknownHostException e) {

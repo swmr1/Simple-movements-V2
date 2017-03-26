@@ -1,3 +1,4 @@
+package mainApp;
 
 public class MovementOfCerberus extends Thread {
 	public static int movX;

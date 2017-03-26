@@ -1,3 +1,4 @@
+package mainApp;
 import java.io.IOException;
 import java.net.*;
 
@@ -11,7 +12,7 @@ public class UDPServer extends Thread
 	   try{
 		   InetAddress host;
 
-			host = InetAddress.getByName(Main.RemoteIp);
+			host = InetAddress.getByName("localHost");
 		   @SuppressWarnings("resource")
 		   DatagramSocket serverSocket = new DatagramSocket();
 		   serverSocket.connect(host, Main.portSending);

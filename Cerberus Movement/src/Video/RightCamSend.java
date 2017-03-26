@@ -2,10 +2,10 @@ package Video;
 
 import java.io.IOException;
 import java.net.*;
-import java.nio.charset.MalformedInputException;
-import java.util.Arrays;
 
 import org.opencv.core.Mat;
+
+import mainApp.Main;
 
 public class RightCamSend extends Thread {
 	// TODO Edit to fit our needs
@@ -16,11 +16,11 @@ public class RightCamSend extends Thread {
 		try {
 			InetAddress host;
 			
-			host = InetAddress.getByName("localhost");
+			host = InetAddress.getByName(Main.RemoteIp);
 			@SuppressWarnings("resource")
 			DatagramSocket serverSocket = new DatagramSocket();
-			serverSocket.connect(host, 5555);
-			VideoCap vid = new VideoCap(0);
+			serverSocket.connect(host, Main.portRightArmCamera);
+			VideoCap vid = new VideoCap(Main.RightCamNum);
 			int i = 1;
 
 
