@@ -12,7 +12,7 @@ public class UDPServer extends Thread
 	   try{
 		   InetAddress host;
 
-			host = InetAddress.getByName("localHost");
+			host = InetAddress.getByName(Main.RemoteIp);
 		   @SuppressWarnings("resource")
 		   DatagramSocket serverSocket = new DatagramSocket();
 		   serverSocket.connect(host, Main.portSending);

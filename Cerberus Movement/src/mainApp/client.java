@@ -30,7 +30,6 @@ public class client extends Thread{
 						Main.fire = Boolean.getBoolean(split[5]);
 						break;
 					}
-//			    	System.out.println("FROM SERVER:" + modifiedSentence);
 			    }
 			    clientSocket.close();
 			      
